@@ -1,5 +1,5 @@
-import BabelInlineImportPlugin from '../plugin';
-import * as babel from '@babel/core';
+const BabelInlineImportPlugin = require('../plugin');
+const babel = require('@babel/core');
 
 describe('Babel Inline Import - Plugin', () => {
   describe('Babel Plugin', () => {

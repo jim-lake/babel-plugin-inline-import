@@ -1,4 +1,4 @@
-import BabelInlineImportHelper from '../plugin/helper';
+const BabelInlineImportHelper = require('../plugin/helper');
 
 describe('Babel Inline Import - Helper', () => {
 

@@ -4,9 +4,9 @@
   "description": "Babel plugin to make raw files importable",
   "author": "Victor Duarte (Quadric ApS) <contact@quadric.net>",
   "license": "MIT",
-  "main": "build/index.js",
+  "main": "plugin/index.js",
   "files": [
-    "build"
+    "plugin"
   ],
   "keywords": [
     "babel-plugin",
@@ -19,21 +19,18 @@
   ],
   "repository": "Quadric/babel-plugin-inline-import",
   "scripts": {
-    "test": "mocha test/*.spec.js --require @babel/register --require @babel/polyfill --require config/mocha.js",
-    "test-watch": "mocha test/*.spec.js --require @babel/register --require @babel/polyfill --require config/mocha.js --watch",
-    "lint-js": "eslint plugin",
-    "prepare": "babel -d build/ plugin/"
+    "test": "mocha test/*.spec.js --require @babel/register --require config/mocha.js",
+    "test-watch": "mocha test/*.spec.js --require @babel/register --require config/mocha.js --watch",
+    "lint-js": "eslint plugin"
   },
   "dependencies": {
     "require-resolve": "0.0.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.0.0",
-    "@babel/core": "^7.0.0",
-    "@babel/polyfill": "^7.4.3",
-    "@babel/preset-env": "^7.4.3",
-    "@babel/register": "^7.4.0",
-    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/cli": "^7.18.9",
+    "@babel/core": "^7.18.9",
+    "@babel/preset-env": "^7.18.9",
+    "@babel/register": "^7.18.9",
     "babel-eslint": "^10.0.1",
     "chai": "^4.2.0",
     "eslint": "^5.16.0",
