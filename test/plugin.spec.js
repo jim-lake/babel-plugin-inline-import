@@ -18,6 +18,20 @@ describe('Babel Inline Import - Plugin', () => {
 const SomeExample = "a raw content\\n";`);
     });
 
+    it('transforms the require default statement into a variable with the intended content', () => {
+      const transformedCode = babel.transform(
+        "const SomeExample = require('./fixtures/example.raw');",
+        {
+          filename: __filename,
+          plugins: [BabelInlineImportPlugin]
+        }
+      );
+
+      expect(transformedCode.code).to.equal(`"use strict";
+
+const SomeExample = "a raw content\\n";`);
+    });
+
     it('transforms the import namespace statement into a variable with the intended content in property "default"', () => {
       const transformedCode = babel.transform(
         "import * as SomeExample from './fixtures/example.raw';",

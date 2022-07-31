@@ -40,7 +40,22 @@ export default function({ types: t }) {
                 });
               }
             }
-          }
+          },
+          CallExpression: {
+            exit(path, state) {
+              const callee = path.get('callee');
+              const arg = path.get('arguments')[0];
+              if (callee.isIdentifier() && callee.equals('name', 'require') && arg.type === 'StringLiteral') {
+                const givenPath = arg.node.value;
+                const extensions = state && state.opts && state.opts.extensions;
+                if (BabelInlineImportHelper.shouldBeInlined(givenPath, extensions)) {
+                  const reference = state && state.file && state.file.opts.filename;
+                  const content = BabelInlineImportHelper.getContents(givenPath, reference);
+                  path.replaceWith(t.stringLiteral(content));
+                }
+              }
+            },
+          },
         }
       };
     }
